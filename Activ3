@@ -1,0 +1,153 @@
+// Import de módulos necesarios de Angular
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule, Routes } from '@angular/router';
+
+// Import de los componentes creados
+import { AppComponent } from './app.component';
+import { WelcomePageComponent } from './welcome-page/welcome-page.component';
+import { BlogPageComponent } from './blog-page/blog-page.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+
+// Rutas de la aplicación
+const routes: Routes = [
+  { path: '', component: WelcomePageComponent },
+  { path: 'blog', component: BlogPageComponent }
+];
+
+@NgModule({
+  declarations: [
+    AppComponent,        // Componente principal
+    WelcomePageComponent,// Página de bienvenida
+    BlogPageComponent,   // Página del blog
+    HeaderComponent,     // Encabezado
+    FooterComponent      // Pie de página
+  ],
+  imports: [
+    BrowserModule,       // Módulo para aplicaciones web
+    RouterModule.forRoot(routes) // Configuración de las rutas
+  ],
+  providers: [],
+  bootstrap: [AppComponent] // Componente raíz
+})
+export class AppModule { }
+
+
+<!-- Archivo HTML principal -->
+<app-header></app-header> <!-- Encabezado -->
+<router-outlet></router-outlet> <!-- Aquí se cargan las páginas -->
+<app-footer></app-footer> <!-- Pie de página -->
+
+
+<!-- Componente de encabezado -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">My Blog</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/">Home</a> <!-- Enlace a la página de bienvenida -->
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/blog">Blog</a> <!-- Enlace a la página del blog -->
+      </li>
+    </ul>
+  </div>
+</nav>
+
+import { Component } from '@angular/core';
+
+// Definición del componente con su selector, plantilla HTML y estilos
+@Component({
+  selector: 'app-header',
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.css']
+})
+export class HeaderComponent { }
+
+
+<!-- Componente de pie de página -->
+<footer class="bg-light text-center text-lg-start">
+  <div class="text-center p-3">
+    © 2024 My Blog
+  </div>
+</footer>
+
+import { Component } from '@angular/core';
+
+// Definición del componente con su selector, plantilla HTML y estilos
+@Component({
+  selector: 'app-footer',
+  templateUrl: './footer.component.html',
+  styleUrls: ['./footer.component.css']
+})
+export class FooterComponent { }
+
+
+<!-- Página de bienvenida -->
+<div class="container text-center">
+  <h1>Bienvenidos</h1>
+  <button class="btn btn-primary" routerLink="/blog">Ingresar</button> <!-- Botón para ir al blog -->
+</div>
+
+
+import { Component } from '@angular/core';
+
+// Definición del componente con su selector, plantilla HTML y estilos
+@Component({
+  selector: 'app-welcome-page',
+  templateUrl: './welcome-page.component.html',
+  styleUrls: ['./welcome-page.component.css']
+})
+export class WelcomePageComponent { }
+
+
+<!-- Página del blog -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <h2>Blog Title</h2>
+      <p>Blog content...</p>
+    </div>
+    <div class="col-md-4">
+      <img src="assets/images/placeholder.jpg" class="img-fluid" alt="Image"> <!-- Imagen del blog -->
+    </div>
+  </div>
+</div>
+
+
+import { Component } from '@angular/core';
+
+// Definición del componente con su selector, plantilla HTML y estilos
+@Component({
+  selector: 'app-blog-page',
+  templateUrl: './blog-page.component.html',
+  styleUrls: ['./blog-page.component.css']
+})
+export class BlogPageComponent { }
+
+
+/* Estilos globales */
+body {
+  font-family: Arial, sans-serif;
+}
+
+
+<!-- Archivo HTML principal de la aplicación -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>BlogApp</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+  <app-root></app-root> <!-- Componente raíz -->
+</body>
+</html>
+
+
